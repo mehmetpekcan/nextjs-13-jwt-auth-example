@@ -11,6 +11,11 @@ const fromServer = async () => {
   return verifiedToken;
 };
 
+// TODO: this `useAuth` creates a vulnerability issue because it needs to have
+// verifyJwtToken which works with process.env.JWT_SECRET_KEY which is not
+// initially available on the client side. This is why we shouldn't rely on
+// this hook if we really don't need to use.
+// Alternatively we can have an API route to to verification on the server layer.
 export function useAuth() {
   // Have also loading state to not show flickering to user
   const [auth, setAuth] = React.useState(null);

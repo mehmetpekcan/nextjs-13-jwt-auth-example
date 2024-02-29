@@ -3,7 +3,7 @@ import { verifyJwtToken } from "@/libs/auth";
 
 const AUTH_PAGES = ["/login", "/register"];
 
-const isAuthPages = (url) => AUTH_PAGES.some((page) => page.startsWith(url));
+const isAuthPages = (url) => AUTH_PAGES.includes(url);
 
 export async function middleware(request) {
   const { url, nextUrl, cookies } = request;
